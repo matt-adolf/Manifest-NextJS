@@ -9,7 +9,7 @@ export default function Navigation() {
                         <Link href="/">Home</Link>
                     </li>
                     <li className="flex-1">
-                        <Link href="/">Documents</Link>
+                        <Link href="/documents">Documents</Link>
                     </li>
                     <li className="flex-1">
                         <Link href="/">Create</Link>
