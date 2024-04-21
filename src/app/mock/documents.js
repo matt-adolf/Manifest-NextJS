@@ -1,4 +1,4 @@
-{
+export const documents = {
     "total_count": 2,
     "incomplete_results": false,
     "items": [
