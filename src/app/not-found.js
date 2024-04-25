@@ -1,4 +1,5 @@
-import Link from 'next/link'
+import { Button } from "flowbite-react";
+import Link from "next/link";
 
 export default function NotFound() {
     return (
@@ -6,7 +7,7 @@ export default function NotFound() {
             <div className="w-auto">
                 <h2 className="text-2xl mb-6">404 - Page Not Found</h2>
                 <p className="mb-6">Could not find requested resource.</p>
-                <Link href="/" className="bg-sky-500 hover:bg-sky-700 px-5 py-2 text-sm leading-5 rounded-full font-semibold text-white">Go Home</Link>
+                <Button as={Link} href="/" color="gray">Go Home</Button>
             </div>
         </div>
     )
