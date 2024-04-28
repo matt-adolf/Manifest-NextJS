@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main>
+    <main className="container mx-auto">
       <h1>Home</h1>
     </main>
   );
