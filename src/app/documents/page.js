@@ -17,7 +17,7 @@ export default async function Documents() {
                             </svg>
                         </div>
                         <div class="flex-auto w-64">
-                            <Link href={`/document/${docName}`}>{docName}</Link>
+                            <Link href={`/documents/${docName}`}>{docName}</Link>
                         </div>
                     </div>
                 </li>
