@@ -23,11 +23,13 @@ export default function Create() {
         `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\n` +
         `## Section 2 Title\n\n` +
         `Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
-    console.log(placeholder)
+
     const [markdown, setMarkdown] = useState(placeholder);
     const [editorValue, setEditorValue] = useState("");
     const [markdownText, setMarkdownText] = useState("");
     const [isSaving, setIsSaving] = useState(false);
+    const [documentTitle, setDocumentTitle] = useState("");
+    const [documentTitleIsValid, setDocumentTitleIsValid] = useState(true);
 
     const onEditorInputChange = (newValue, editor) => {
         setEditorValue(newValue);
@@ -42,8 +44,14 @@ export default function Create() {
     }
 
     function saveDocument() {
-        setIsSaving(true)
-        setTimeout(() => setIsSaving(false), 2000);
+        if (documentTitle == "") {
+            setDocumentTitleIsValid(false)
+        }
+        else {
+            setDocumentTitleIsValid(true)
+            setIsSaving(true);
+            setTimeout(() => setIsSaving(false), 2000);
+        }
     }
 
     return (
@@ -57,6 +65,14 @@ export default function Create() {
                         placeholder="my-document-title"
                         required
                         disabled={isSaving}
+                        onChange={(e) => {
+                            setDocumentTitle(e.target.value);
+                        }}
+                        helperText={
+                            documentTitleIsValid == false &&
+                            <>Oops! You forgot to provide a document title!</>
+                        }
+                        {...(documentTitleIsValid == false && { color: "failure" })}
                     />
                 </div>
                 <div className="flex-auto w-64">
