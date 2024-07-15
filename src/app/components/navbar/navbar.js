@@ -21,7 +21,7 @@ export default function Header() {
                     Home
                 </NavbarLink>
                 <NavbarLink href="/documents" className="text-white hover:!text-purple-600">Documents</NavbarLink>
-                <NavbarLink href="#" className="text-white hover:!text-purple-600">Create</NavbarLink>
+                <NavbarLink href="/documents/create" className="text-white hover:!text-purple-600">Create</NavbarLink>
             </NavbarCollapse>
         </Navbar>
     )
