@@ -27,6 +27,7 @@ export default function Create() {
     const [markdown, setMarkdown] = useState(placeholder);
     const [editorValue, setEditorValue] = useState("");
     const [markdownText, setMarkdownText] = useState("");
+    const [isSaving, setIsSaving] = useState(false);
 
     const onEditorInputChange = (newValue, editor) => {
         setEditorValue(newValue);
@@ -40,21 +41,44 @@ export default function Create() {
         }
     }
 
+    function saveDocument() {
+        setIsSaving(true)
+        setTimeout(() => setIsSaving(false), 2000);
+    }
+
     return (
         <main className="container mx-auto">
             <h1 className="text-3xl mb-6">Create</h1>
             <div className="flex space-x-4 mb-6">
                 <div className="flex-auto w-64">
-                    <TextInput id="documentTitle" type="text" placeholder="my-document-title" required />
+                    <TextInput
+                        id="documentTitle"
+                        type="text"
+                        placeholder="my-document-title"
+                        required
+                        disabled={isSaving}
+                    />
                 </div>
                 <div className="flex-auto w-64">
-                    <Button gradientDuoTone="purpleToBlue">
-                        <svg className="mr-2 h-5 w-5 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M11 16h2m6.707-9.293-2.414-2.414A1 1 0 0 0 16.586 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V7.414a1 1 0 0 0-.293-.707ZM16 20v-6a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v6h8ZM9 4h6v3a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V4Z" />
-                        </svg>
+                    <Button
+                        gradientDuoTone="purpleToBlue"
+                        //onClick={() => setOpenModal(true)}
+                        onClick={() => saveDocument()}
+                        isProcessing={isSaving}
+                        disabled={isSaving}
+                    >
+                        {
+                            isSaving == true ?
+                                <>Saving</>
+                                :
+                                <>
+                                    <svg className="mr-2 h-5 w-5 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M11 16h2m6.707-9.293-2.414-2.414A1 1 0 0 0 16.586 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V7.414a1 1 0 0 0-.293-.707ZM16 20v-6a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v6h8ZM9 4h6v3a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V4Z" />
+                                    </svg>
+                                    Save
+                                </>
+                        }
 
-
-                        Save
                     </Button>
                 </div>
             </div>
@@ -73,6 +97,7 @@ export default function Create() {
                         value={editorValue}
                         initialValue={placeholder.replace(/\n/g, '<br />')} //replace function fixes formatting issue
                         remove_linebreaks={false}
+                        disabled={isSaving}
                         init={{
                             height: 500,
                             menubar: false,
