@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tinymce/tinymce-react": "^5.1.1",
     "axios": "^1.7.2",
     "cookie": "^0.6.0",
     "cookies-next": "^4.2.1",
@@ -16,9 +17,11 @@
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "next": "14.2.2",
+    "raw-loader": "^4.0.2",
     "react": "^18",
     "react-dom": "^18",
-    "react-markdown": "^9.0.1"
+    "react-markdown": "^9.0.1",
+    "tinymce": "^7.2.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.13",
