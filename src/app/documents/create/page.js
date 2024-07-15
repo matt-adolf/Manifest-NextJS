@@ -117,7 +117,8 @@ export default function Create() {
                         init={{
                             height: 500,
                             menubar: false,
-                            plugins: 'textpattern link lists image',
+                            //plugins: 'textpattern link lists image',
+                            plugins: 'link lists image',
                             highlight_on_focus: true,
                             text_patterns: false, //remove auto-formatting when markdown is typed
                             // text_patterns: [
